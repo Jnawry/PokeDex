@@ -4,10 +4,12 @@ Created as a way to test my ablitily to use APIs. I did a lot of the work before
 
 # Todo list
 
-- [ ] Make the search functional
+- [x] Make the search functional
 - [x] Style cards to display type by background color 
 - [x] Get more details on click 
 - [ ] Sorting
 - [ ] About page
 - [ ] More general styling
 - [ ] Clean up
+- [ ] add search options to specify between type or name
+- [ ] add search option for number(possibly with min and max)
