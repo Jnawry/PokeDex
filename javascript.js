@@ -1,6 +1,6 @@
 const pokeContainer = document.querySelector("#poke-container");
 const modal = document.querySelector('.modal');
-
+const searchBar = document.getElementById('search');
 
 let pokemonStore = [];
 
@@ -172,6 +172,23 @@ function populatemodal(pokeId){
     modal.classList.remove('hidden')
 }
 
+function searchPoke(input){
+    var searchRegEx = new RegExp(input, 'gi');
+
+    pokeDeck = [];
+    pokeDeck = pokemonStore.filter(p => {
+        if(p.name.search(searchRegEx) != -1) return true;
+        if(p.types.find(i => i.search(searchRegEx) != -1)) return true;
+        return false;
+    });
+    const cards = [];
+    pokeDeck.forEach(p => { cards.push(buildPokeCards(p))});
+    pokeContainer.innerHTML = '';
+    cards.forEach(poke => {
+            pokeContainer.append(poke.content)
+        });
+}
+
 
 
 fetchpokemonList(151, 0)
@@ -179,3 +196,16 @@ fetchpokemonList(151, 0)
 // johtoPokemon = fetchpokemonList(100, 151);
 
 
+searchBar.addEventListener('submit', e => {
+    e.preventDefault();
+    if(e.target[0].value != ''){
+        searchPoke(e.target[0].value);
+    }
+    else{
+        cards = [];
+        pokemonStore.forEach( p => cards.push(buildPokeCards(p)));
+        pokeContainer.innerHTML = '';
+        cards.forEach(p => pokeContainer.append(p.content));
+    }
+    
+})
