@@ -1,3 +1,5 @@
+const typesImgsBtns = document.querySelectorAll('[name="type"]');
+
 const pokeContainer = document.querySelector("#poke-container");
 const modal = document.querySelector('.modal');
 const searchBar = document.getElementById('search');
@@ -189,9 +191,20 @@ function searchPoke(input){
         });
 }
 
+function showTypeIcons(type){
+    let typeLoc = typeBtnImgs[type];
+    return `<img src="${typeLoc}" style="height: 1.5rem; width: auto; background: none; border: none; box-shadow: none;">`;
+}
+
+typesImgsBtns.forEach(t => {
+    t.insertAdjacentHTML('afterend', showTypeIcons(t.id));
+    t.height = '10px';
+})
 
 
-fetchpokemonList(151, 0)
+
+ fetchpokemonList(3, 0);
+// fetchpokemonList(151, 0);
 
 // johtoPokemon = fetchpokemonList(100, 151);
 

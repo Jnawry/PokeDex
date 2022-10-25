@@ -196,3 +196,12 @@ ul{
     height: 100%;
     overflow: hidden;
 }
+
+.typeFilter {
+    font-size: 1rem;
+    text-shadow: none;
+}
+
+.typeFilter > input{
+    display: none;
+}
