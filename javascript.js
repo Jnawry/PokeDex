@@ -3,6 +3,9 @@ const typesImgsBtns = document.querySelectorAll('[name="type"]');
 const pokeContainer = document.querySelector("#poke-container");
 const modal = document.querySelector('.modal');
 const searchBar = document.getElementById('search');
+const filtersMenu = document.querySelector(".filterOptions");
+const filterPop = document.querySelector(".filterPopOut");
+const menuClose = document.querySelector(".closeBtn")
 
 let pokemonStore = [];
 
@@ -201,10 +204,26 @@ typesImgsBtns.forEach(t => {
     t.height = '10px';
 })
 
+function toggleFiltersVis(){
+
+    if(filtersMenu.classList.contains("hidden")){
+        filtersMenu.classList.remove("hidden");
+        filterPop.classList.add("hidden");
+    }
+    else{
+        filtersMenu.classList.add("hidden");
+        filterPop.classList.remove("hidden");
+        }
 
 
- fetchpokemonList(3, 0);
-// fetchpokemonList(151, 0);
+}
+
+filtersMenu.addEventListener("click", toggleFiltersVis);
+menuClose.addEventListener("click", toggleFiltersVis);
+
+
+//  fetchpokemonList(3, 0);
+fetchpokemonList(151, 0);
 
 // johtoPokemon = fetchpokemonList(100, 151);
 

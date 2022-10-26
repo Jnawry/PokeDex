@@ -12,35 +12,40 @@
 <body>
     <div class="header">
         <h1>Kanto PokeDex</h1>
-        <div class="searchbar"><form id="search">
-            <label for="search"><input type="text" name="textInput" id="searchbar"></label>
-            <?xml version="1.0" encoding="UTF-8"?>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490" >
-                <path fill="none" stroke="#FFF" stroke-width="36" stroke-linecap="round"
-                d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110" />
-            </svg> 
-            <div class="typeFilter">
-                <input type="radio" name="type" id="bug">
-                <input type="radio" name="type" id="dark">
-                <input type="radio" name="type" id="dragon">
-                <input type="radio" name="type" id="electric">
-                <input type="radio" name="type" id="fairy">
-                <input type="radio" name="type" id="fighting">
-                <input type="radio" name="type" id="fire">
-                <input type="radio" name="type" id="flying">
-                <input type="radio" name="type" id="ghost">
-                <input type="radio" name="type" id="grass">
-                <input type="radio" name="type" id="ground">
-                <input type="radio" name="type" id="ice">
-                <input type="radio" name="type" id="normal">
-                <input type="radio" name="type" id="poison">
-                <input type="radio" name="type" id="psychic">
-                <input type="radio" name="type" id="rock">
-                <input type="radio" name="type" id="steel">
-                <input type="radio" name="type" id="water">
+        <form id="search">
+            <div class="searchbar">
+                <label for="search"><input type="text" name="textInput" id="searchbar"></label>
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490" >
+                    <path fill="none" stroke="#FFF" stroke-width="36" stroke-linecap="round"
+                    d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110" />
+                </svg> 
+            </div> 
+            <button class="filterOptions" type="button">Filter Options</button>
+            <div class="filterPopOut hidden">
+                <button class="closeBtn" type="button">X</button>
+                <div class="typeFilter">
+                    <input type="radio" name="type" id="bug">
+                    <input type="radio" name="type" id="dark">
+                    <input type="radio" name="type" id="dragon">
+                    <input type="radio" name="type" id="electric">
+                    <input type="radio" name="type" id="fairy">
+                    <input type="radio" name="type" id="fighting">
+                    <input type="radio" name="type" id="fire">
+                    <input type="radio" name="type" id="flying">
+                    <input type="radio" name="type" id="ghost">
+                    <input type="radio" name="type" id="grass">
+                    <input type="radio" name="type" id="ground">
+                    <input type="radio" name="type" id="ice">
+                    <input type="radio" name="type" id="normal">
+                    <input type="radio" name="type" id="poison">
+                    <input type="radio" name="type" id="psychic">
+                    <input type="radio" name="type" id="rock">
+                    <input type="radio" name="type" id="steel">
+                    <input type="radio" name="type" id="water">
+                </div>
             </div>
-            </form>
-        </div>
+        </form>
     </div>
     <div id="poke-container"></div>
     <!-- modal box -->
