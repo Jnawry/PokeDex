@@ -90,7 +90,7 @@ svg {
     text-shadow: 0 0 .5rem black;
 }
 
-img {
+#poke-container img {
     width: 10rem;
     height: 10rem;
     background-color: white;
@@ -117,7 +117,7 @@ ul{
     position: fixed;
     top: 25%;
     left: 25%;
-    width: 50%;
+    width: clamp(50%, 371px, 1000px);
     height: auto; 
     border: .5rem solid black;
     border-radius: 2.5rem;
@@ -180,6 +180,10 @@ ul{
     padding: 1rem;
 }
 
+.modal img {
+    margin: .8rem .8rem 0 0;
+}
+
 #search{
     display: flex;
     flex-direction: column;
@@ -219,8 +223,10 @@ ul{
 
 .closeBtn {
     position: relative;
-    left: 85%;
+    left: 90%;
+    top: -.7rem;
     width: 1rem;
+    margin: .2rem;
 
     border-radius: 50%;
     padding: .2rem;
@@ -231,11 +237,29 @@ ul{
     text-shadow: none;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: .2rem;
     
 }
 
 .typeFilter > input{
     display: none;
+}
+
+
+
+.typeIcon {
+    height: 30px;
+    aspect-ratio: 5 / 2;
+    filter: brightness(50%);
+    /* border: black 1px solid; */
+    border-radius: 50vh;
+    background: none;
+    box-shadow: none;
+}
+
+.typeIcon:hover,
+.typeFilter > input:checked + .typeIcon{
+    filter: brightness(100%);
 }
 
 .hidden{

@@ -1,5 +1,5 @@
+//declearations
 const typesImgsBtns = document.querySelectorAll('[name="type"]');
-
 const pokeContainer = document.querySelector("#poke-container");
 const modal = document.querySelector('.modal');
 const searchBar = document.getElementById('search');
@@ -8,6 +8,8 @@ const filterPop = document.querySelector(".filterPopOut");
 const menuClose = document.querySelector(".closeBtn")
 
 let pokemonStore = [];
+
+//Functions
 
 const fetchpokemonList = async (limit, offset) => {
     const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`);
@@ -196,13 +198,12 @@ function searchPoke(input){
 
 function showTypeIcons(type){
     let typeLoc = typeBtnImgs[type];
-    return `<img src="${typeLoc}" style="height: 1.5rem; width: auto; background: none; border: none; box-shadow: none;">`;
+    const img = document.createElement('img');
+    img.classList.add('typeIcon');
+    img.dataset.type = type;
+    img.src = typeLoc;
+    return img;
 }
-
-typesImgsBtns.forEach(t => {
-    t.insertAdjacentHTML('afterend', showTypeIcons(t.id));
-    t.height = '10px';
-})
 
 function toggleFiltersVis(){
 
@@ -218,18 +219,38 @@ function toggleFiltersVis(){
 
 }
 
-filtersMenu.addEventListener("click", toggleFiltersVis);
-menuClose.addEventListener("click", toggleFiltersVis);
+typesImgsBtns.forEach(t => {
+    const img = showTypeIcons(t.id);
+    if(t.nextSibling){
+        t.parentNode.insertBefore(img, t.nextSibling);
+    }
+    else{
+        t.parentNode.appendChild(img);
+    }
+    t.height = '10px';
+    img.addEventListener('click', e => {
+        const radiobtn = document.querySelector(`#${e.target.dataset.type}`);
+        radiobtn.checked? radiobtn.checked = false : radiobtn.checked = true;
+        searchPoke(e.target.dataset.type);
+    })
+})
 
 
-//  fetchpokemonList(3, 0);
-fetchpokemonList(151, 0);
+// Test List
+fetchpokemonList(9, 0);
 
+// Full Kanto List
+// fetchpokemonList(151, 0);
+
+// Full Johto List
 // johtoPokemon = fetchpokemonList(100, 151);
 
 
+//Event Listeners
+
 searchBar.addEventListener('submit', e => {
     e.preventDefault();
+    console.log(e);
     if(e.target[0].value != ''){
         searchPoke(e.target[0].value);
     }
@@ -241,3 +262,7 @@ searchBar.addEventListener('submit', e => {
     }
     
 })
+
+filtersMenu.addEventListener("click", toggleFiltersVis);
+
+menuClose.addEventListener("click", toggleFiltersVis);
