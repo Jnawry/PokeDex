@@ -179,14 +179,33 @@ function populatemodal(pokeId){
     modal.classList.remove('hidden')
 }
 
+function checkForTypes(){
+    const inputTypes = [...document.querySelectorAll("input[name='type']")];
+    return inputTypes.filter(t => t.checked).map(t => t.id);
+}
+
 function searchPoke(input){
     var searchRegEx = new RegExp(input, 'gi');
+    const checkedTypes = checkForTypes();
 
     pokeDeck = [];
     pokeDeck = pokemonStore.filter(p => {
-        if(p.name.search(searchRegEx) != -1) return true;
-        if(p.types.find(i => i.search(searchRegEx) != -1)) return true;
-        return false;
+        let vaildPoke = [];
+        if(p.name.search(searchRegEx) != -1) vaildPoke.push(p);
+        else if(p.types.find(i => i.search(searchRegEx) != -1)) vaildPoke.push(p);
+        // console.log(vaildPoke);
+        if(checkedTypes.length > 0 && vaildPoke.length != 0){
+            if(vaildPoke[0].types.find(i => {
+                for(type in checkedTypes){
+                    // console.log(checkedTypes[type] == i, p.name)
+                    if(checkedTypes[type] == i)return true;
+                }
+            }) == undefined){
+                console.log(p.name, " shift")
+                vaildPoke.shift();
+            }
+        }
+        return vaildPoke.length > 0 ? true : false;
     });
     const cards = [];
     pokeDeck.forEach(p => { cards.push(buildPokeCards(p))});
@@ -195,6 +214,8 @@ function searchPoke(input){
             pokeContainer.append(poke.content)
         });
 }
+
+
 
 function showTypeIcons(type){
     let typeLoc = typeBtnImgs[type];
@@ -231,7 +252,7 @@ typesImgsBtns.forEach(t => {
     img.addEventListener('click', e => {
         const radiobtn = document.querySelector(`#${e.target.dataset.type}`);
         radiobtn.checked? radiobtn.checked = false : radiobtn.checked = true;
-        searchPoke(e.target.dataset.type);
+        searchPoke(document.getElementById('searchbar').value);
     })
 })
 

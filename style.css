@@ -257,7 +257,10 @@ ul{
     box-shadow: none;
 }
 
-.typeIcon:hover,
+.typeIcon:hover {
+    filter: brightness(75%);
+}
+
 .typeFilter > input:checked + .typeIcon{
     filter: brightness(100%);
 }
