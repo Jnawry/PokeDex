@@ -6,6 +6,23 @@ const searchBar = document.getElementById('search');
 const filtersMenu = document.querySelector(".filterOptions");
 const filterPop = document.querySelector(".filterPopOut");
 const menuClose = document.querySelector(".closeBtn")
+const about = document.querySelector(".about");
+
+function showMain() {
+    if(pokeContainer.classList.contains('hidden')) {
+        pokeContainer.classList.remove('hidden');
+        pokeContainer.style.display = '';
+    }
+    if(!about.classList.contains('hidden')) about.classList.add('hidden');
+}
+
+function showAbout() {
+    if(!pokeContainer.classList.contains('hidden')){ 
+        pokeContainer.classList.add('hidden');
+        pokeContainer.style.display = 'none';
+    }
+    if(about.classList.contains('hidden')) about.classList.remove('hidden');
+}
 
 let pokemonStore = [];
 

@@ -8,8 +8,9 @@ Created as a way to test my ablitily to use APIs. I did a lot of the work before
 - [x] Style cards to display type by background color 
 - [x] Get more details on click 
 - [ ] Sorting
-- [ ] About page
+- [x] About page
 - [ ] More general styling
 - [ ] Clean up
 - [ ] add search options to specify between type or name
 - [ ] add search option for number(possibly with min and max)
+- [x] fixed scroll jump

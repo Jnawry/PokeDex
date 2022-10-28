@@ -12,6 +12,8 @@
 <body>
     <div class="header">
         <h1>Kanto PokeDex</h1>
+
+        <nav><li id="home" onclick="showMain()">Home</li><li id="about" onclick="showAbout()">About</li></nav>
         <form id="search">
             <div class="searchbar">
                 <label for="search"><input type="text" name="textInput" id="searchbar"></label>
@@ -49,9 +51,10 @@
     </div>
     <div id="poke-container"></div>
     <!-- modal box -->
-    <div class="modal hidden" style="background: rgb(255, 238, 140)">
-
+    <div class="modal hidden" style="background: rgb(255, 238, 140)"></div>
+    <div class="about hidden">
+        <h3>Purpose</h3>
+        <p>This page was created with just HTML, CSS, and Javascript. This was an intentional choice to practice those skills.</p>
     </div>
-
 </body>
 </html>
